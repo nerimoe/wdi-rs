@@ -265,7 +265,7 @@ impl LibwdiBuild
             // libwdi doesn't let you simply not define driver file locations for libusb-win32
             // or libusbK to disable them, so let's disable them with a patch.
             // FIXME: This should probably be configurable through feature flags.
-            (Path::new("msvc/config.h"), Path::new("winusb_only.patch")),
+            (Path::new("msvc/config.h"), Path::new("libusb0_only.patch")),
 
             // libwdi's installer makes a mess of some types that makes ARM compilation
             // angry, so fix the type mistakes with a patch.
@@ -436,23 +436,23 @@ impl LibwdiBuild
             .target(&env::var("HOST").expect("Cargo always sets HOST"))
             .include(self.libwdi_src.join("libwdi"));
 
-        // Allow the user to specify WDK_DIR environment variable to override the default WDK
+        // Allow the user to specify LIBUSB0_DIR environment variable to override the default WDK
         // directory. This becomes necessary when cross compiling.
-        if let Ok(val) = env::var("WDK_DIR") {
-            embedder.define("WDK_DIR", Some(format!(r#""{}""#, val).as_str()));
+        if let Ok(val) = env::var("LIBUSB0_DIR") {
+            embedder.define("LIBUSB0_DIR", Some(format!(r#""{}""#, val).as_str()));
         }
-        println!("cargo:rerun-if-env-changed=WDK_DIR");
+        println!("cargo:rerun-if-env-changed=LIBUSB0_DIR");
 
         // If we're cross compiling...
         if !cfg!(windows) {
             // config.h errors if _MSC_VER isn't defined, so let's just define it.
-            embedder.define("_MSC_VER", "1929");
+            // embedder.define("_MSC_VER", "1929");
 
-            // Also let the user know that WDK_DIR is required when cross compiling.
-            if let Err(_e) = env::var("WDK_DIR") {
-                error!("WDK_DIR environment variable required when cross compiling");
-                error!("Hint: Download the WDK 8.0 redistributable components here: https://learn.microsoft.com/en-us/windows-hardware/drivers/other-wdk-downloads\nand then set $WDK_DIR to something like '/opt/Program Files/Windows Kits/8.0' depending on where you extracted the WDK");
-                panic!("WDK_DIR environment variable required when cross compiling");
+            // Also let the user know that LIBUSB0_DIR is required when cross compiling.
+            if let Err(_e) = env::var("LIBUSB0_DIR") {
+                error!("LIBUSB0_DIR environment variable required when cross compiling");
+                // error!("Hint: Download the WDK 8.0 redistributable components here: https://learn.microsoft.com/en-us/windows-hardware/drivers/other-wdk-downloads\nand then set $LIBUSB0_DIR to something like '/opt/Program Files/Windows Kits/8.0' depending on where you extracted the WDK");
+                panic!("LIBUSB0_DIR environment variable required when cross compiling");
             }
         } else {
             embedder.include(self.libwdi_src.join("msvc"));
