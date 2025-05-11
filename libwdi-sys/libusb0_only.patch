@@ -1,7 +1,8 @@
-diff --git a/msvc/config.h b/msvc/config
---- a/msvc/config.h
-+++ b/msvc/config.h
-@@ -15,34 +15,9 @@
+diff --git "a/.\\config.h" "b/.\\config_new.h"
+index c44d377..5c0d7a4 100644
+--- "a/.\\config.h"
++++ "b/.\\config_new.h"
+@@ -15,34 +15,12 @@
  #pragma warning(disable:6387)
  #endif
  
@@ -16,9 +17,9 @@ diff --git a/msvc/config.h b/msvc/config
 -#define WDK_DIR "C:/Program Files (x86)/Windows Kits/8.0"
 -#endif
 -
--/* WDK WDF coinstaller version */
--#define WDF_VER 1011
--
+ /* WDK WDF coinstaller version */
+ #define WDF_VER 1011
+ 
 -/* CoInstaller subdirectory for WinUSB redist files ("winusb" or "wdf") */
 -#define COINSTALLER_DIR "wdf"
 -

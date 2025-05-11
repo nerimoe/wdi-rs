@@ -446,7 +446,7 @@ impl LibwdiBuild
         // If we're cross compiling...
         if !cfg!(windows) {
             // config.h errors if _MSC_VER isn't defined, so let's just define it.
-            // embedder.define("_MSC_VER", "1929");
+            embedder.define("_MSC_VER", "1929");
 
             // Also let the user know that LIBUSB0_DIR is required when cross compiling.
             if let Err(_e) = env::var("LIBUSB0_DIR") {
@@ -636,7 +636,6 @@ impl LibwdiBuild
     fn make_lib(&self)
     {
         info!("Building libwdi static library...");
-
         let lib_srcs: Vec<OsString> = [
             "libwdi.c",
             "libwdi_dlg.c",
