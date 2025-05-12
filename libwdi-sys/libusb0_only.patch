@@ -1,8 +1,8 @@
 diff --git "a/.\\config.h" "b/.\\config_new.h"
-index c44d377..5c0d7a4 100644
+index c44d377..f5957d6 100644
 --- "a/.\\config.h"
 +++ "b/.\\config_new.h"
-@@ -15,34 +15,12 @@
+@@ -15,34 +15,17 @@
  #pragma warning(disable:6387)
  #endif
  
@@ -29,12 +29,13 @@ index c44d377..5c0d7a4 100644
  /* embed libusb0 driver files from the following location */
  #ifndef LIBUSB0_DIR
 -#define LIBUSB0_DIR "D:/libusb-win32"
--#endif
--
--/* embed libusbK driver files from the following location */
--#ifndef LIBUSBK_DIR
--#define LIBUSBK_DIR "D:/libusbK/bin"
 +#define LIBUSB0_DIR "E:/libusb-win32"
+ #endif
+ 
+ /* embed libusbK driver files from the following location */
+ #ifndef LIBUSBK_DIR
+-#define LIBUSBK_DIR "D:/libusbK/bin"
++#define LIBUSBK_DIR "E:/libusbK/bin"
  #endif
  
  /* embed user defined driver files from the following location */
