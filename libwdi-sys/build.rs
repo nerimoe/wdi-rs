@@ -650,10 +650,12 @@ impl LibwdiBuild
             .collect();
 
         let mut lib = cc::Build::new();
+        if let Ok(_) = env::var("WDI_DISABLE_DEBUG_LOG") {
+            info!("WDI Debug log disabled");
+            lib.define("WDI_DISABLE_DEBUG_LOG", None);
+        }
         self.apply_common_cc_options(&mut lib, BuildType::Target);
-        lib
-            .files(&lib_srcs)
-            .compile("wdi");
+        lib.files(&lib_srcs).compile("wdi");
 
         println!("cargo:include={}", self.libwdi_src.join("libwdi").to_str().unwrap());
         println!("cargo:rustc-link-lib=shell32");
