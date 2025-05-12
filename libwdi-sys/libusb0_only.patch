@@ -1,8 +1,8 @@
 diff --git "a/.\\config.h" "b/.\\config_new.h"
-index c44d377..f5e9155 100644
+index c44d377..5c0d7a4 100644
 --- "a/.\\config.h"
 +++ "b/.\\config_new.h"
-@@ -15,34 +15,17 @@
+@@ -15,34 +15,12 @@
  #pragma warning(disable:6387)
  #endif
  
@@ -18,25 +18,23 @@ index c44d377..f5e9155 100644
 -#endif
 -
  /* WDK WDF coinstaller version */
--#define WDF_VER 1011
--
+ #define WDF_VER 1011
+ 
 -/* CoInstaller subdirectory for WinUSB redist files ("winusb" or "wdf") */
 -#define COINSTALLER_DIR "wdf"
 -
 -/* 64bit subdirectory for WinUSB redist files ("x64" or "amd64") */
 -#define X64_DIR "x64"
-+#define WDF_VER 1009
- 
+-
  /* embed libusb0 driver files from the following location */
  #ifndef LIBUSB0_DIR
 -#define LIBUSB0_DIR "D:/libusb-win32"
-+#define LIBUSB0_DIR "E:/libusb-win32"
- #endif
- 
- /* embed libusbK driver files from the following location */
- #ifndef LIBUSBK_DIR
+-#endif
+-
+-/* embed libusbK driver files from the following location */
+-#ifndef LIBUSBK_DIR
 -#define LIBUSBK_DIR "D:/libusbK/bin"
-+#define LIBUSBK_DIR "E:/libusbK/bin"
++#define LIBUSB0_DIR "E:/libusb-win32"
  #endif
  
  /* embed user defined driver files from the following location */
