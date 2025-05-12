@@ -1,5 +1,5 @@
 diff --git "a/.\\config.h" "b/.\\config_new.h"
-index c44d377..f5957d6 100644
+index c44d377..69017e1 100644
 --- "a/.\\config.h"
 +++ "b/.\\config_new.h"
 @@ -15,34 +15,17 @@
@@ -39,3 +39,14 @@ index c44d377..f5957d6 100644
  #endif
  
  /* embed user defined driver files from the following location */
+@@ -63,7 +46,9 @@
+ //#define ENABLE_DEBUG_LOGGING
+ 
+ /* Debug message logging (toggable) */
++#ifndef WDI_LOG
+ #define INCLUDE_DEBUG_LOGGING
+ 
+ /* Message logging */
+ #define ENABLE_LOGGING 1
++#endif
+\ No newline at end of file
